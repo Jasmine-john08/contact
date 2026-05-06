@@ -1,0 +1,125 @@
+.modal {
+    width: 320px;
+    background: #a28acd;
+    border-radius: 16px;
+    padding: 25px 20px;
+    margin: 200px auto;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+.modal .btn {
+    position: absolute;
+    top: 5px;
+    right: 1px;
+    left: 219px;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.modal .btn:hover {
+    color: #ef4444;
+}
+
+
+.modal img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+
+.modal h3 {
+    margin: 5px 0;
+    color: #1e3a8a;
+}
+
+
+.modal h5 {
+    margin-bottom: 20px;
+    color: #6b7280;
+    font-weight: 400;
+}
+
+
+.modal div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9fafb;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.modal div:hover {
+    background: #eef2ff;
+}
+
+.modal div svg {
+    font-size: 18px;
+    color: #2563eb;
+}
+
+
+.modal div h4 {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
+    text-align: left;
+    color: #374151;
+}
+
+
+.modal div svg:last-child {
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.modal div svg:last-child:hover {
+    color: #2563eb;
+}
+
+
+.modal div:last-child {
+    background: transparent;
+    padding: 0;
+    margin-top: 15px;
+}
+
+
+.modal button {
+    padding: 8px 50px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+.modal div:last-child button:first-child {
+    background: #2564eba0;
+    color: white;
+}
+
+.modal div:last-child button:first-child:hover {
+    background: #1e40afbf;
+}
+
+.modal div:last-child button:last-child {
+    background: #ef444470;
+    color: white;
+}
+
+.modal div:last-child button:last-child:hover {
+    background: #bc060670;
+}

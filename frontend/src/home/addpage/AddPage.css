@@ -1,0 +1,82 @@
+.add-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eef2ff;
+}
+
+.add-card {
+    width: 380px;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.add-card h2 {
+    margin-bottom: 20px;
+    color: #1e3a8a;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-box svg {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: gray;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px 10px 10px 38px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.input-box input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+}
+
+/* button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+} */
+
+button:hover {
+    transform: translateY(-2px);
+}
+.cancel-div{
+ display: flex;
+ justify-content: flex-end;
+ width: 100%;
+}
+.cancel-btn {
+  background-color: rgba(255, 255, 255, 0);   
+  border: none;                  
+  color: crimson;                 
+  font-size: 1.5rem;               
+  cursor: pointer;                 
+  transition: transform 0.2s ease; 
+}
+
+.cancel-btn:hover {
+  transform: scale(1.2);           /* enlarge slightly */
+  color: rgb(206, 16, 16);                  /* darker red on hover */
+}
