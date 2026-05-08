@@ -7,6 +7,14 @@ class Users(models.Model):
     Password=models.CharField(max_length=50)
     Token=models.CharField(max_length=500)
 
+    @classmethod
+    def is_authenticated(cls, token):
+        try:
+            user = cls.objects.get(Token=token)
+            return True
+        except cls.DoesNotExist:
+            return False
+
 class Category(models.Model):
     name=models.CharField(max_length=50)
 

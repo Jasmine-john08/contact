@@ -1,37 +1,139 @@
-import React from 'react'
-import { MdEmail, MdOutlineCancel } from "react-icons/md";
-import { BsTelephoneFill } from "react-icons/bs";
-import { IoIosCopy } from "react-icons/io";
-import "./Model.css"
-const Modal = ({state}) => {
-    
-  return (
-    <div className='modal'>
-        <button className='btn' onClick={()=>{state(false)}}><MdOutlineCancel /></button>
-        <img src="profile.webp" alt="" />
-        <h3>Jasmine John</h3>
-        <h5>software developer</h5>
+import React, { useState } from 'react';
+import axios from 'axios';
 
-        <div>
-            <BsTelephoneFill/>
-            <h4>
-                mobile 
-            </h4>
-            <IoIosCopy/>
-        </div>
-        <div>
-            <MdEmail/>
-            <h4>
-                Email
-            </h4>
-            <IoIosCopy/>
-        </div>
-        <div className=''>
-            <button>Edit</button>
-            <button>Delete</button>
-        </div>
-    </div>
-  )
-}
+import { MdOutlineCancel } from "react-icons/md";
 
-export default Modal
+import "./Model.css";
+
+import EditContact from '../editcontact/EditContact';
+
+const Modal = ({ state, contact }) => {
+
+    // ================= NULL CHECK =================
+
+    if (!contact) return null;
+
+    // ================= EDIT PAGE STATE =================
+
+    const [editState, setEditState] = useState(false);
+
+    // ================= DELETE FUNCTION =================
+
+    const handleDelete = async () => {
+
+        try {
+
+            const token = localStorage.getItem("token");
+
+            await axios.delete(
+
+                `http://127.0.0.1:8000/api/delete_contacts/${contact.id}/`,
+
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+
+            );
+
+            alert("Deleted Successfully ✅");
+
+            state(false);
+
+            window.location.reload();
+
+        } catch (err) {
+
+            console.log(err);
+
+            alert("Delete Failed ❌");
+
+        }
+
+    };
+
+    // ================= MAIN UI =================
+
+    return (
+
+        <div className='modal'>
+
+            {/* CLOSE BUTTON */}
+
+            <button
+                className='btn'
+                onClick={() => state(false)}
+            >
+                <MdOutlineCancel />
+            </button>
+
+            {/* PROFILE IMAGE */}
+
+            <img
+                src="profile.webp"
+                alt="profile"
+                className='profile-img'
+            />
+
+            {/* CONTACT DETAILS */}
+
+            <div className='contact-card'>
+
+                <h2>{contact.name}</h2>
+
+                <p>
+                    <strong>Phone:</strong> {contact.Number}
+                </p>
+
+                <p>
+                    <strong>Email:</strong> {contact.email}
+                </p>
+
+                <p>
+                    <strong>Category:</strong>{" "}
+                    {contact.Category?.name || "No Category"}
+                </p>
+
+            </div>
+
+            {/* BUTTONS */}
+
+            <div className='modal-btns'>
+
+                <button
+                    className='edit-btn'
+                    onClick={() => setEditState(true)}
+                >
+                    Edit
+                </button>
+
+                <button
+                    className='delete-btn'
+                    onClick={handleDelete}
+                >
+                    Delete
+                </button>
+
+            </div>
+
+            {/* EDIT CONTACT PAGE */}
+
+            {editState && (
+
+                <EditContact
+
+                    contact={contact}
+
+                    closeEdit={setEditState}
+
+                />
+
+            )}
+
+        </div>
+
+    );
+};
+
+export default Modal;
